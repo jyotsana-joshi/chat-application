@@ -1,0 +1,17 @@
+<full-calendar *ngIf="IsOptions" [options]="calendarOptions"></full-calendar>
+
+<app-ui-modal [hideHeader]="false" [modalSize]="'w-400'" [hideFooter]="false" (afterClose)="afterCloseModal();"
+  #uiAddEventModal>
+  <div class="app-modal-header">
+    Add Events
+  </div>
+  <div class="app-modal-body">
+    <div class="form-group pull-right">
+      <input type="text" placeholder="Enter Event" [(ngModel)]="event" class="form-control input-field">
+    </div>
+    <div class="form-group" style="float: right; margin-top: 10px;">
+      <button type="button" class="btn btn-primary btn-block font-weight-bold bg-orange"
+      (click)="submit()">Submit</button>        
+    </div>
+  </div>
+</app-ui-modal>

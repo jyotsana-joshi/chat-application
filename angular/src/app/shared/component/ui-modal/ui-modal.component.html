@@ -1,0 +1,17 @@
+<ng-template #template>
+  <div class="modal-header" *ngIf="!hideHeader">
+    <h4 class="modal-title pull-left">{{headerTitle}}</h4>
+    <ng-content select=".app-modal-header"></ng-content>
+
+    <button type="button" class="close pull-right" aria-label="Close" (click)="hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <ng-content select=".app-modal-body"></ng-content>
+  </div>
+  <div class="modal-footer" *ngIf="!hideFooter" [class.footer-fixed]="footerFixed">
+    <button type="button" *ngIf="!hideCloseBtn" class="btn btn-secondary" (click)="hide()">Close</button>
+    <ng-content select=".app-modal-footer"></ng-content>
+  </div>
+</ng-template>

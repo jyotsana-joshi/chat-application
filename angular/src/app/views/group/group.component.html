@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card-header ">
+                <div class="form-group ">
+                    <button class="btn btn-sm btn-success" (click)="uiModal.show()">
+                        <i class="fa fa-plus"></i>
+                        Add Group
+                    </button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <greed-table [title]="'Group List'" [headingData]="columnDefs" [fixedColumn]="true"
+                        [rowData]="rowData" *ngIf="rowData.length">
+                    </greed-table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<app-ui-modal [headerTitle]="'Add Group'" [modalSize]="'lg'" (afterClose)="afterCloseModal()" #uiModal>
+    <div class="app-modal-body">
+        <form [formGroup]="form" autocomplete="off">
+            <div class="row">
+              <div class="form-group col-sm-6">
+                <label for="group_Name">Group Name<sup class="text-danger">*</sup></label>
+                <input type="text" id="group_Name" class="form-control" placeholder="Group Name" formControlName="groupName"
+                  [class.is-invalid]="(submitted || f['groupName'].dirty) && f['groupName'].errors">
+                <span class="invalid-feedback"
+                  *ngIf="submitted && f['groupName'].errors && f['groupName'].errors['required']">Group Name Sku is
+                  required</span>
+              </div>
+              <div class="form-group col-sm-6">
+                <label for="Active">Status<sup class="text-danger">*</sup></label>
+                <div>
+                  <div class="form-check form-check-inline mr-1">
+                    <input class="form-check-input" id="Active" name="status" type="radio" value="1" formControlName="status">
+                    <label class="form-check-label" for="Active">Active</label>
+                  </div>
+                  <div class="form-check form-check-inline mr-1">
+                    <input class="form-check-input" id="Inactive" name="status" type="radio" value="0"
+                      formControlName="status">
+                    <label class="form-check-label" for="Inactive">Inactive</label>
+                  </div>
+                </div>
+                <span class="field-error"  *ngIf="submitted && f['groupName'].errors && f['groupName'].errors['required']">Status is required</span>
+              </div>
+            </div>
+       
+        
+            <span class="error-msg">{{errorMsg}}</span>
+          </form>
+    </div>
+    <div class="app-modal-footer">
+        <button type="button" class="btn btn-primary" (click)="save()">{{(pleaseWait) ? 'Please wait ...' :
+            'Save'}}</button>
+    </div>
+  </app-ui-modal>

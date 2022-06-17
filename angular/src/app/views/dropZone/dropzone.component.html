@@ -1,0 +1,15 @@
+<div #dropListContainer class="example-container" cdkDropListGroup>
+  <ngx-dropzone (change)="onSelect($event)">
+    <ngx-dropzone-label>Drop it!</ngx-dropzone-label>
+    <ngx-dropzone-preview *ngFor="let f of files; let i = index" [removable]="true" (removed)="onRemove(f)" cdkDropList
+      [cdkDropListData]="i" style="display:flex;">
+
+      <ngx-dropzone-label cdkDrag [cdkDragData]="i" (cdkDragEntered)="dragEntered($event)"
+        (cdkDragMoved)="dragMoved($event)" (cdkDragDropped)="dragDropped($event)">
+        <img src="\assets\images\{{f.name}}" alt="" width="50%">
+      </ngx-dropzone-label>
+    </ngx-dropzone-preview>
+
+  </ngx-dropzone>
+
+</div>

@@ -1,0 +1,14 @@
+// Here you can add other styles
+
+.pull-right{
+    float: right;
+}
+
+.error-msg, .field-error, .success-msg {
+    width: 100%;
+    margin-top: 0.25rem;
+  }
+  .error-msg, .field-error { 
+    white-space: pre-line;
+    color: red
+  }

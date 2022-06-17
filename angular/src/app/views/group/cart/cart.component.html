@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        Cart List
+                    </div>
+                    <div style="float: right;">
+                        Total: {{total | currency:'INR'}}
+                    </div>
+                </div>
+                <div class="card-body">
+                    <greed-table [title]="''" [headingData]="columnDefs" [fixedColumn]="true" [rowData]="rowData"
+                        *ngIf="rowData.length"></greed-table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
